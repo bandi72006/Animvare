@@ -8,9 +8,9 @@ pygame.init()
 screen = pygame.display.set_mode((1280,720))  
 run = True
 
-target = [640, 360]
+target = [500,500]
 
-leader = Species(1,1, target, (0,0,255))
+leader = Species(1001,1001, target, (0,0,255))
 species = [Species(100*i, 600, [leader.x, leader.y], (255,0,0)) for i in range(10)]
 
 while True:  
