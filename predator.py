@@ -4,7 +4,7 @@ import pygame
 import math
 import random
 
-class Species:
+class Predator:
     def __init__(self, x, y, target, colour):
         self.x = x
         self.y = y
@@ -22,8 +22,8 @@ class Species:
         changeInX = math.cos(math.radians(self.rotation)) 
         changeInY = math.sin(math.radians(self.rotation))
 
-        self.x += changeInX*random.random()
-        self.y += changeInY*random.random()
+        self.x += changeInX*(random.random()/2)
+        self.y += changeInY*(random.random()/2)
 
         if self.x > 1280:
             self.x = 1280

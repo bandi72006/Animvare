@@ -3,6 +3,7 @@
 import pygame
 import random
 from species import * 
+from predator import *
 
 pygame.init()  
 screen = pygame.display.set_mode((1280,720))  
@@ -11,21 +12,26 @@ run = True
 target = [random.randint(0,1280), random.randint(0,720)]
 
 leader = Species(random.randint(0,1280), random.randint(0,720), target, (0,0,255))
-species = [Species(random.randint(0,1280), random.randint(0,720), [leader.x, leader.y], (255,0,0)) for i in range(10)]
+species = [Species(random.randint(0,1280), random.randint(0,720), [leader.x, leader.y], (255,0,0)) for i in range(20)]
+hunters = [Predator(random.randint(0,1280), random.randint(0,720), [leader.x, leader.y], (0,0,0)) for i in range(5)]
 
 frames = 0
 
 while True:  
-    screen.fill((0,200,0))
+    screen.fill((0,120,0))
     
     frames += 1
     pygame.draw.circle(screen, (255,255,0), (target[0], target[1]), 7)
 
-    if frames > 2000:
+    if frames > 1000:
         target = [random.randint(0,1280), random.randint(0,720)]
         frames = 0
 
     for i in species:
+        i.move(leader.x, leader.y)
+        i.draw(screen)
+
+    for i in hunters:
         i.move(leader.x, leader.y)
         i.draw(screen)
     
