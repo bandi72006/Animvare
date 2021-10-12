@@ -10,6 +10,7 @@ class Biologist:
         self.y = y
         self.target = target
         self.colour = colour
+        self.rotation = 0
         self.hunted = False
 
     def move(self, xTar, yTar):

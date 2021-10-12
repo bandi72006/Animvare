@@ -9,6 +9,7 @@ class Predator:
         self.x = x
         self.y = y
         self.target = target
+        self.rotation = 0
         self.colour = colour
 
     def move(self, xTar, yTar, isBiologist):
@@ -27,8 +28,8 @@ class Predator:
         changeInY = math.sin(math.radians(self.rotation))
 
         
-        self.x += changeInX*(random.random()/2)
-        self.y += changeInY*(random.random()/2)
+        self.x += changeInX*(random.random())
+        self.y += changeInY*(random.random())
 
         if self.x > 1280:
             self.x = 1280

@@ -24,11 +24,13 @@ frames = 0
 bGo = False
 tUpdate = random.randint(100,1000)
 
+fpsClock = pygame.time.Clock()
+
 while True:  
     screen.fill((0,120,0))
     
     frames += 1
-    pygame.draw.circle(screen, (255,255,255), (target[0], target[1]), 7)
+    #pygame.draw.circle(screen, (255,255,255), (target[0], target[1]), 7)
 
     #creates biologists after 1000 frames
     if bGo:
@@ -46,8 +48,8 @@ while True:
         if i.hunted == False:
             i.move(leader.x, leader.y)
             i.isHunted(hunters)
-        else:
-            bGo = True
+        #else:
+            #bGo = True
 
         i.draw(screen)
     
@@ -73,6 +75,8 @@ while True:
     pygame.draw.line(screen, (0,0,0), (0,500), (250,500), 5)
     pygame.draw.line(screen, (0,0,0), (250,500), (250,720), 5)
     screen.blit(sanctuaryText, (40,600))
+
+    fpsClock.tick(200)
 
     for event in pygame.event.get():  
         if event.type == pygame.QUIT:  
