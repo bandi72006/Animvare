@@ -10,6 +10,7 @@ class Species:
         self.y = y
         self.target = target
         self.colour = colour
+        self.hunted = False
 
     def move(self, xTar, yTar):
 
@@ -34,6 +35,12 @@ class Species:
             self.y = 720
         if self.y < 0:
             self.y = 0
+
+    def isHunted(self, predators):
+        for i in predators:
+            if (i.x + 7 > self.x-7) and (i.x - 7 < self.x + 7):
+                if (i.y + 7 > self.y-7) and (i.y - 7 < self.y + 7):
+                    self.hunted = True
 
     def draw(self, screen):
         pygame.draw.circle(screen, self.colour, (self.x, self.y), 7)
