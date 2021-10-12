@@ -41,6 +41,7 @@ class Species:
             if (i.x + 7 > self.x-7) and (i.x - 7 < self.x + 7):
                 if (i.y + 7 > self.y-7) and (i.y - 7 < self.y + 7):
                     self.hunted = True
+                    self.colour = (150,0,0)
 
     def draw(self, screen):
         pygame.draw.circle(screen, self.colour, (self.x, self.y), 7)

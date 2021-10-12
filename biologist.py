@@ -4,20 +4,17 @@ import pygame
 import math
 import random
 
-class Predator:
+class Biologist:
     def __init__(self, x, y, target, colour):
         self.x = x
         self.y = y
         self.target = target
         self.colour = colour
+        self.hunted = False
 
-    def move(self, xTar, yTar, isBiologist):
+    def move(self, xTar, yTar):
 
-        if isBiologist:
-            self.target = [1250,30]
-        else:
-            self.target = [xTar, yTar]
-            
+        self.target = [xTar, yTar]
         try:
             self.rotation = random.randint(-10,10)+20*(math.degrees(math.atan((self.target[1]-self.y)/(self.target[0]-self.x))))
         except:
@@ -26,9 +23,8 @@ class Predator:
         changeInX = math.cos(math.radians(self.rotation)) 
         changeInY = math.sin(math.radians(self.rotation))
 
-        
-        self.x += changeInX*(random.random()/2)
-        self.y += changeInY*(random.random()/2)
+        self.x += changeInX*random.random()
+        self.y += changeInY*random.random()
 
         if self.x > 1280:
             self.x = 1280
